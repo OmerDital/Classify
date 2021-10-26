@@ -1,12 +1,8 @@
-import {Router} from 'express';
+import { Router } from 'express';
+import { getAll } from './controller';
 
 const router = Router();
 
-const students = [
-  {name: "omer", city: "tel aviv"},
-  {name: "ofek", city: "kidron"}
-];
-
-router.get('/', ((req, res) => res.send(students)));
+router.get('/', getAll);
 
 export default router;
