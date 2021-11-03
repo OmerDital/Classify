@@ -1,8 +1,3 @@
-import React from 'react';
-
-const App = () =>
-    <div>
-      <h1>Classify</h1>
-    </div>;
+const App = () => (<h1>Classify.js</h1>);
 
 export default App;
