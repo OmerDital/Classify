@@ -11,7 +11,7 @@ export default () => {
   app.use(cors());
   app.use('/api', apiRouter);
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3001;
 
   return new Promise(resolve => {
     app.listen(port, () => resolve(port));

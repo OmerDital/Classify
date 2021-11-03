@@ -1,13 +1,14 @@
 import startServer from './config/express';
 import connectDatabase from './config/database';
 
-connectDatabase()
-  .then(startServer)
-  .then(port => {
-    // eslint-disable-next-line no-console
+const startup = async () => {
+  try {
+    await connectDatabase();
+    const port = await startServer();
     console.log(`server started on port ${port}!`);
-  })
-  .catch(() => {
-    // eslint-disable-next-line no-console
-    console.error('An error occured while starting the website');
-  });
+  } catch (error) {
+    console.error('An error occurred while starting the website');
+  }
+};
+
+startup();

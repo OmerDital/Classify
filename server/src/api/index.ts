@@ -1,6 +1,8 @@
-import { Router, Request, Response, NextFunction } from 'express';
-import {Error} from '../types/error';
+import {
+  Router, Request, Response, NextFunction,
+} from 'express';
 import studentsRouter from './students';
+import { Error } from '../types/error';
 
 const router = Router();
 
