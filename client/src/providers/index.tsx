@@ -5,11 +5,10 @@ import Rtl from './Rtl';
 
 const Providers: FC = ({ children }) => (
   <Rtl>
-    <CssBaseline>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
-    </CssBaseline>
+    <CssBaseline />
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
   </Rtl>
 );
 

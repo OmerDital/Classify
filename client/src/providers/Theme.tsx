@@ -5,7 +5,7 @@ const theme = createTheme({
   direction: 'rtl',
   palette: {
     primary: {
-      main: '#660066'
+      main: '#660066',
     },
   },
 });
