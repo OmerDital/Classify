@@ -8,7 +8,8 @@ const cacheRtl = createCache({
   stylisPlugins: [rtlPlugin],
 });
 
-const Rtl: FC = ({ children }) =>
-  <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
+const Rtl: FC = ({ children }) => (
+  <CacheProvider value={cacheRtl}>{children}</CacheProvider>
+);
 
 export default Rtl;
