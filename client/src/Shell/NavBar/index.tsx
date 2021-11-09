@@ -1,23 +1,35 @@
 import {
-  AppBar, Button, Toolbar, Typography,
+  AppBar, Grid, Toolbar, Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import NavButton from './NavButton';
 
 const NavBar = () => (
   <AppBar position='relative'>
-    <Toolbar>
-      <Typography variant='h3' gutterBottom component='div'>
-        Classify
-      </Typography>
-      <Button component={Link} to='/' sx={{ color: 'white' }}>
-        Students Page
-      </Button>
-      <Button component={Link} to='/classes' sx={{ color: 'white' }}>
-        Classes Page
-      </Button>
-      <Button component={Link} to='/grade-settings' sx={{ color: 'white' }}>
-        grade settings
-      </Button>
+    <Toolbar sx={{ padding: '5px' }}>
+      <Grid container>
+        <Grid container direction='column' alignItems='center'>
+          <Typography variant='h3' gutterBottom component='div'>
+            Classify
+          </Typography>
+          <Grid container width='50%'>
+            <NavButton
+              to='/'
+            >
+              תלמידים
+            </NavButton>
+            <NavButton
+              to='/classes'
+            >
+              כיתות
+            </NavButton>
+            <NavButton
+              to='/grade-settings'
+            >
+              הגדרת שכבה
+            </NavButton>
+          </Grid>
+        </Grid>
+      </Grid>
     </Toolbar>
   </AppBar>
 );

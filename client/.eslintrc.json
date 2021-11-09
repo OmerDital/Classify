@@ -31,6 +31,7 @@
         "import/prefer-default-export": "off",
         "react/jsx-props-no-spreading": "off",
         "jsx-quotes": ["error", "prefer-single"],
-        "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }]
+        "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
+        "@typescript-eslint/comma-dangle": "off"
     }
 }
