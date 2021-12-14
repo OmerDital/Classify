@@ -5,13 +5,16 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint src --ext .jsx,.tsx,.js,.ts"
+    "lint": "eslint src --ext .jsx,.tsx,.js,.ts",
+    "prepare": "cd ../ && husky install ./client/.husky"
   },
   "dependencies": {
     "@emotion/cache": "^11.5.0",
     "@emotion/react": "^11.5.0",
+    "@mui/icons-material": "^5.2.4",
     "@mui/material": "^5.0.6",
     "@mui/system": "^5.0.6",
+    "axios": "^0.24.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^6.0.0-beta.8",
@@ -31,8 +34,9 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "history": "^5.1.0",
+    "husky": "^7.0.4",
     "stylis": "^4.0.10",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"

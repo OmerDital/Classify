@@ -1,33 +1,8 @@
 import { Schema, model } from 'mongoose';
+import { Student } from '../../../../common/view-models/student';
+import { Gender } from '../../../../common/enums/gender';
 
-enum Gender {
-  male = 1,
-  female,
-}
-
-interface User {
-  id: string,
-  name: string,
-  city: string,
-  gender: Gender,
-  phoneNumber: string,
-  parentAName: string,
-  parentAPhoneNumber: string,
-  parentAEmail: string,
-  parentBName?: string,
-  parentBPhoneNumber?: string,
-  parentBEmail?: string,
-  emotional?: number,
-  educational?: number,
-  social?: number,
-  requestedFriends?: [string]
-}
-
-const schema = new Schema<User>({
-  id: {
-    type: String,
-    required: true,
-  },
+const schema = new Schema<Student>({
   name: {
     type: String,
     required: true,
