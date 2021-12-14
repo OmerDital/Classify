@@ -1,33 +1,10 @@
 import { Schema, model } from 'mongoose';
+import { Student } from '../../../../common/view-models/student';
+import { Gender } from '../../../../common/enums/gender';
+import ParentSchema from './parent-schema';
+import ParametersSchema from './parameters-schema';
 
-enum Gender {
-  male = 1,
-  female,
-}
-
-interface User {
-  id: string,
-  name: string,
-  city: string,
-  gender: Gender,
-  phoneNumber: string,
-  parentAName: string,
-  parentAPhoneNumber: string,
-  parentAEmail: string,
-  parentBName?: string,
-  parentBPhoneNumber?: string,
-  parentBEmail?: string,
-  emotional?: number,
-  educational?: number,
-  social?: number,
-  requestedFriends?: [string]
-}
-
-const schema = new Schema<User>({
-  id: {
-    type: String,
-    required: true,
-  },
+const schema = new Schema<Student>({
   name: {
     type: String,
     required: true,
@@ -45,46 +22,22 @@ const schema = new Schema<User>({
     type: String,
     required: false,
   },
-  parentAName: {
-    type: String,
-    required: true,
+  parentA: {
+    type: ParentSchema,
+    required: true
   },
-  parentAPhoneNumber: {
-    type: String,
-    required: true,
-  },
-  parentAEmail: {
-    type: String,
-    required: true,
-  },
-  parentBName: {
-    type: String,
-    required: false,
-  },
-  parentBPhoneNumber: {
-    type: String,
-    required: false,
-  },
-  parentBEmail: {
-    type: String,
-    required: false,
+  parentB: {
+    type: ParentSchema,
+    required: false
   },
   requestedFriends: {
     type: [String],
     required: true,
   },
-  emotional: {
-    type: Number,
-    required: false,
-  },
-  social: {
-    type: Number,
-    required: false,
-  },
-  educational: {
-    type: Number,
-    required: false,
-  },
+  parameters: {
+    type: ParametersSchema,
+    required: true
+  }
 });
 
 export default model('Student', schema, 'students');
