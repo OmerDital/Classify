@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const useAuth = () => {
-  const [user, setUser] = useState({ user: 'omer' });
+  const [user] = useState({ user: 'omer' });
 
   return user;
 };
