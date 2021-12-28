@@ -4,7 +4,8 @@
   "description": "Classify server",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon ./src/index.ts",
+    "start": "nodemon src/index.ts",
+    "dev": "nodemon --inspect src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Classify LTD",
@@ -34,5 +35,10 @@
     "kmeans-ts": "^1.0.4",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "node --require ts-node/register/transpile-only"
+    }
   }
 }
