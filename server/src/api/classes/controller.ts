@@ -20,6 +20,42 @@ const getVectors = (students: Student[]) => students.reduce((vectors, currStuden
   throw new Error('parameters were not filled');
 }, [] as number[][]);
 
+const getSimilarStudentsGroups = (kmeansIndexes: number[], students: Student[]) => {
+  const similarStudents: Student[][] = [];
+  // Gender and friends are not calculated here
+  for (let i = 0; i < kmeansIndexes.length; i++) {
+    const studentsIndex = kmeansIndexes[i];
+    if (!similarStudents[studentsIndex]) {
+      similarStudents[studentsIndex] = [];
+    }
+
+    similarStudents[studentsIndex].push(students[i]);
+  }
+
+  return similarStudents;
+};
+
+/**
+ * Take every student from a group and spread them in the classes as equally as possible
+ * @param similarStudents - groups of similar attributes students
+ * @param numOfClasses
+ */
+const createHeterogeneousClasses = (similarStudents: Student[][], numOfClasses: number) => {
+  const classes: Student[][] = []; //TODO: use reduce
+
+  similarStudents.forEach((studentsGroup => {
+    studentsGroup.forEach((student, index) => {
+      if (!classes[index % numOfClasses]) {
+        classes[index % numOfClasses] = [];
+      }
+
+      classes[index % numOfClasses].push(student);
+    });
+  }));
+
+  return classes;
+};
+
 const vectorsMock = [
   [1],
   [2],
@@ -32,19 +68,9 @@ const calculate = (students: Student[], classCapacity: number) => {
   const numOfClasses = students.length / classCapacity;
 
   const simillarGroups = kmeans(vectorsMock, numOfClasses);
+  const similarStudents = getSimilarStudentsGroups(simillarGroups.indexes, students);
 
-  const classes: Student[][] = [];
-  // Gender and friends are not calculated here
-  for (let i = 0; i < simillarGroups.indexes.length; i++) {
-    const classIndex = simillarGroups.indexes[i];
-    if (!classes[classIndex]) {
-      classes[classIndex] = [];
-    }
-
-    classes[classIndex].push(students[i]);
-  }
-
-  return classes; // Fix: change to classes of not similar students
+  return createHeterogeneousClasses(similarStudents, numOfClasses);
 };
 
 export const createClasses = async (req: Request, res: Response, next: NextFunction) => {
