@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Classes from './Classes';
 import Students from './Students';
-import GradeSettings from './GradeSettings';
 import Shell from './Shell';
 import RequireAuth from '../components/RequireAuth';
 import StudentInfoDialog from './Students/StudentInfoDialog';
@@ -17,7 +16,6 @@ const ShellRoutes = () => {
           <Route path='/' element={<Shell />}>
             <Route index element={<Students />} />
             <Route path='classes' element={<Classes />} />
-            <Route path='grade-settings' element={<GradeSettings />} />
           </Route>
         </RequireAuth>
       </Routes>
