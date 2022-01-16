@@ -1,34 +1,29 @@
 import {
-  AppBar, Grid, Toolbar, Typography,
+  AppBar, Grid, Stack, Toolbar, Typography,
 } from '@mui/material';
 import NavButton from './NavButton';
 
 const NavBar = () => (
-  <AppBar position='relative'>
-    <Toolbar sx={{ padding: '5px' }}>
-      <Grid container>
-        <Grid container direction='column' alignItems='center'>
-          <Typography variant='h3' gutterBottom component='div'>
+  <AppBar position='relative' sx={{ height: '80px' }}>
+    <Toolbar sx={{ p: '3 px' }}>
+      <Grid container height='100%' direction='column' alignItems='center'>
+        <Grid item>
+          <Typography fontFamily='Bubblegum Sans' fontSize='36px' component='div'>
             Classify
           </Typography>
-          <Grid container width='50%'>
-            <NavButton
-              to='/'
-            >
-              תלמידים
-            </NavButton>
-            <NavButton
-              to='/classes'
-            >
-              כיתות
-            </NavButton>
-            <NavButton
-              to='/grade-settings'
-            >
-              הגדרת שכבה
-            </NavButton>
-          </Grid>
         </Grid>
+        <Stack direction='row' spacing={2}>
+          <NavButton
+            to='/'
+          >
+            תלמידים
+          </NavButton>
+          <NavButton
+            to='/classes'
+          >
+            חלוקת כיתות
+          </NavButton>
+        </Stack>
       </Grid>
     </Toolbar>
   </AppBar>

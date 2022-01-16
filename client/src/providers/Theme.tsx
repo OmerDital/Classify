@@ -8,8 +8,15 @@ const theme = createTheme({
       main: '#660066',
     },
     background: {
-      paper: '#eaeaea'
-    }
+      paper: '#F6F4F6'
+    },
+  },
+  typography: {
+    fontFamily: [
+      'Rubik',
+      'Bubblegum Sans',
+      'sans-serif'
+    ].join(',')
   },
 });
 

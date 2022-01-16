@@ -30,11 +30,11 @@ const CustomLink = forwardRef<HTMLAnchorElement, LinkProps>(
 );
 
 const NavButton = ({ children, to }: LinkProps) => (
-  <Grid item xs container justifyContent='center'>
+  <Grid item justifyContent='center' height='1px'>
     <Button
       component={CustomLink}
       to={to}
-      sx={{ color: 'white', borderRadius: 0 }}
+      sx={{ color: 'white', borderRadius: 0, p: 0 }}
     >
       {children}
     </Button>
