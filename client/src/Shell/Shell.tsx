@@ -6,7 +6,7 @@ const Shell = () => (
   // find better way to calc the height
   <>
     <NavBar />
-    <Grid container sx={{ height: 'calc(100% - 80px)' }}>
+    <Grid container sx={{ height: 'calc(100% - 80px)', overflow: 'auto' }}>
       <Outlet />
     </Grid>
   </>

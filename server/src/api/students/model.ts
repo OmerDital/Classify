@@ -5,9 +5,13 @@ import ParentSchema from './parent-schema';
 import ParametersSchema from './parameters-schema';
 
 const schema = new Schema<Student>({
-  name: {
+  firstName: {
     type: String,
     required: true,
+  },
+  lastName: {
+    type: String,
+    required: true
   },
   city: {
     type: String,

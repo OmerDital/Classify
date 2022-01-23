@@ -3,9 +3,9 @@ import ClassesList from './ClassesList';
 
 const Classes = () => {
   // TODO: fetch classes
-  const classes = null;
+  const classes = [{ _id: '1', number: 1, students: [] }];
 
-  return classes ? <ClassesList /> : <NoClasses />;
+  return classes ? <ClassesList classes={classes} /> : <NoClasses />;
 };
 
 export default Classes;
