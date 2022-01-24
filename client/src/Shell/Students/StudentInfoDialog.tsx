@@ -3,10 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Dialog, Skeleton } from '@mui/material';
 import { Student } from '../../../../common/view-models/student';
 import { useFetch } from '../../hooks';
-import { axiosInstance } from '../../utils/axios-instance';
 import StudentInfoCard from './StudentInfoCard';
-
-const onUpdate = (newStudent: Student) => axiosInstance.put(`api/students/${newStudent._id}`, newStudent);
+import useMutate from '../../hooks/use-mutate';
 
 interface StudentInfoDialogProps {
   open: boolean,
@@ -15,7 +13,8 @@ interface StudentInfoDialogProps {
 const StudentInfoDialog = ({ open }: StudentInfoDialogProps) => {
   const navigate = useNavigate();
   const { id } = useParams<'id'>();
-  const [student, isLoading] = useFetch<Student>(`students/${id}`);
+  const [student, isLoading] = useFetch<Student>(['students', id], `students/${id}`);
+  const [mutate] = useMutate(['students', id], `students/${id}`, 'put');
 
   const [updatedStudent, setUpdatedStudent] = useState<Student>();
 
@@ -23,6 +22,7 @@ const StudentInfoDialog = ({ open }: StudentInfoDialogProps) => {
     setUpdatedStudent(student);
   }, [student]);
 
+  const onUpdate = (newStudent: Student) => mutate(newStudent);
 
   const onDismiss = () => {
     updatedStudent && onUpdate(updatedStudent);

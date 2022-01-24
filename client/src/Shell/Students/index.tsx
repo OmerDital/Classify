@@ -7,7 +7,7 @@ import { Student } from '../../../../common/view-models/student';
 import { useFetch } from '../../hooks';
 
 const Students = () => {
-  const [students, isLoading, error] = useFetch<Student[]>('students');
+  const [students, isLoading, error] = useFetch<Student[]>('students', 'students');
   const location = useLocation();
 
   if (isLoading) {
@@ -31,7 +31,7 @@ const Students = () => {
                   && student.parameters.social
                     && <CheckIcon />
                 }
-                <Typography variant='h6'>{student.name}</Typography>
+                <Typography variant='h6'>{`${student.firstName} ${student.lastName}`}</Typography>
               </Stack>
             </Paper>
           </Link>

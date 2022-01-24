@@ -6,10 +6,16 @@ import { useParams } from 'react-router-dom';
 import { Class } from '../../../../../common/view-models/class';
 import { useFetch } from '../../../hooks';
 import ClassDetails from './ClassDetails';
+import { useAlert } from '../../../providers/Alert';
 
 const SpecificClass = () => {
   const { classId } = useParams();
-  const [currentClass] = useFetch<Class>(`classes/${classId}`);
+  const [currentClass, , isError] = useFetch<Class>(['classes', classId], `classes/${classId}`);
+
+  if (isError) {
+    const { error: alertError } = useAlert();
+    alertError('משהו השתבש, אנא נסה שוב מאוחר יותר');
+  }
 
   return (
     <Grid container p={2}>

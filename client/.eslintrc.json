@@ -35,6 +35,7 @@
         "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
         "@typescript-eslint/comma-dangle": "off",
         "no-underscore-dangle": "off",
-        "@typescript-eslint/no-unused-expressions": "off"
+        "@typescript-eslint/no-unused-expressions": "off",
+        "react/require-default-props": "off"
     }
 }
