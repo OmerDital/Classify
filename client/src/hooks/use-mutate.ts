@@ -1,34 +1,23 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import {
+  QueryKey, UseMutateFunction, useMutation, useQueryClient
+} from 'react-query';
+import { axiosInstance } from '../utils/axios-instance';
 
-type UseMutation<T> = [T | undefined, boolean, Error | undefined];
-type MutationType = 'post' | 'put';
+type UsePost = [UseMutateFunction<unknown, Error, unknown>, boolean, Error | null];
 
-const useMutation = <T>(url: string, mutationType: MutationType, dataToMutate: T)
-  : UseMutation<T> => {
-  const [isLoading, setIsIsLoading] = useState(true);
-  const [error, setError] = useState<Error>();
-  const [data, setData] = useState();
+const useMutate = (key: QueryKey, url: string, method: 'post' | 'put'): UsePost => {
+  const queryClient = useQueryClient();
+  const {
+    mutate,
+    isLoading,
+    error
+  } = useMutation<unknown, Error, unknown>(key, data => axiosInstance[method](url, data), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(key);
+    }
+  });
 
-  useEffect(() => {
-    const mutateData = async () => {
-      try {
-        const response = await axios[mutationType](`api/${url}`, dataToMutate);
-
-        if (response) {
-          setData(response.data);
-        }
-      } catch (e) {
-        setError(error);
-      } finally {
-        setIsIsLoading(false);
-      }
-    };
-
-    mutateData();
-  }, []);
-
-  return [data, isLoading, error];
+  return [mutate, isLoading, error];
 };
 
-export default useMutation;
+export default useMutate;
