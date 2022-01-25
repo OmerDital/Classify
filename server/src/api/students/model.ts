@@ -1,10 +1,10 @@
 import { Schema, model } from 'mongoose';
-import { Student } from '../../../../common/view-models/student';
 import { Gender } from '../../../../common/enums/gender';
 import ParentSchema from './parent-schema';
 import ParametersSchema from './parameters-schema';
+import FriendSchema from './friend-schema';
 
-const schema = new Schema<Student>({
+const schema = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -13,35 +13,20 @@ const schema = new Schema<Student>({
     type: String,
     required: true
   },
-  city: {
-    type: String,
-    required: true,
-  },
+  idNumber: Number,
+  address: String,
   gender: {
     type: Number,
-    enum: [Gender.female, Gender.male],
-    required: true,
+    enum: [Gender.female, Gender.male]
   },
-  phoneNumber: {
-    type: String,
-    required: false,
-  },
-  parentA: {
-    type: ParentSchema,
-    required: true
-  },
-  parentB: {
-    type: ParentSchema,
-    required: false
-  },
-  requestedFriends: {
-    type: [String],
-    required: true,
-  },
-  parameters: {
-    type: ParametersSchema,
-    required: true
-  }
+  dateOfBirth: Date,
+  phoneNumber: String,
+  parentA: ParentSchema,
+  parentB: ParentSchema,
+  requestedFriends: [FriendSchema],
+  parameters: ParametersSchema,
+  lastSchool: String,
+  hatedStudent: FriendSchema,
 });
 
 export default model('Student', schema, 'students');

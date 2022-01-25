@@ -4,13 +4,13 @@ import { getGenderAsString } from '../../../utils/gender-translator';
 
 interface StudentInfoField {
   label: string;
-  value: 'gender' | 'idNumber' | 'city' | 'phoneNumber';
+  value: 'gender' | 'idNumber' | 'address' | 'phoneNumber';
 }
 
 const infoFields = [
   { label: 'מין', value: 'gender' },
   { label: 'תז', value: 'idNumber' },
-  { label: 'יישוב', value: 'city' },
+  { label: 'כתובת', value: 'address' },
   { label: 'מספר טלפון', value: 'phoneNumber' },
 ] as StudentInfoField[];
 

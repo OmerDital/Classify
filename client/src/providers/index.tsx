@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import ThemeProvider from './Theme';
 import Rtl from './Rtl';
 import { AlertProvider } from './Alert';
+import Localization from './Localization';
 
 const Providers = ({ children }: { children: JSX.Element[] }) => {
   const queryClient = new QueryClient();
@@ -13,9 +14,11 @@ const Providers = ({ children }: { children: JSX.Element[] }) => {
       <CssBaseline />
       <ThemeProvider>
         <AlertProvider>
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
+          <Localization>
+            <QueryClientProvider client={queryClient}>
+              {children}
+            </QueryClientProvider>
+          </Localization>
         </AlertProvider>
       </ThemeProvider>
     </Rtl>
